@@ -23,8 +23,6 @@ router.get('/:postId', (req, res) => {
 // POST create new post:
 router.post('/new', (req, res) => {
     Post.create(req.body, (err, createdPost) => {
-        console.log("Request OK");
-
         if (err) return res.json(err)
         res.json(createdPost)
     })
