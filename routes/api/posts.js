@@ -46,6 +46,15 @@ router.delete('/delete', (req, res) => {
     })
 })
 
+// PUT edit post by id
+router.put('/edit', (req, res) => {
+    // object 'new' needed, if not, mongoose returns old document before edit
+    Post.findByIdAndUpdate(req.body.postId, req.body, { new: true }, (err, postEdited) => {
+        if (err) return res.json({ error: err })
+        res.json(postEdited)
+    })
+})
+
 
 
 module.exports = router;
